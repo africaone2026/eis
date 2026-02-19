@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #0a0e1a;
+  --bg-surface: #111827;
+  --bg-card: #161d2e;
+  --bg-card-hover: #1c2540;
+  --bg-input: #1a2236;
+  --bg-overlay: rgba(10, 14, 26, 0.85);
+
+  --text-primary: #f0f4ff;
+  --text-secondary: #8b9ab5;
+  --text-tertiary: #5a6a85;
+  --text-muted: #3d4f6e;
+  --text-inverse: #0a0e1a;
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  --accent-primary: #2563eb;
+  --accent-primary-hover: #1d4ed8;
+  --accent-secondary: #0ea5e9;
+
+  --status-stable: #10b981;
+  --status-stable-bg: rgba(16, 185, 129, 0.10);
+  --status-stable-border: rgba(16, 185, 129, 0.25);
+
+  --status-watch: #f59e0b;
+  --status-watch-bg: rgba(245, 158, 11, 0.10);
+  --status-watch-border: rgba(245, 158, 11, 0.25);
+
+  --status-action: #ef4444;
+  --status-action-bg: rgba(239, 68, 68, 0.10);
+  --status-action-border: rgba(239, 68, 68, 0.25);
+
+  --severity-critical: #ef4444;
+  --severity-high: #f59e0b;
+  --severity-medium: #3b82f6;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-elevated: 0 10px 40px rgba(0, 0, 0, 0.5);
+  --shadow-panel: -4px 0 40px rgba(0, 0, 0, 0.6);
+
+  --nav-height: 64px;
+}
+
+[data-theme="light"] {
+  --bg-base: #f4f5f7;
+  --bg-surface: #eaecf0;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f2f5;
+  --bg-input: #f8f9fb;
+  --bg-overlay: rgba(244, 245, 247, 0.92);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --text-muted: #94a3b8;
+  --text-inverse: #f0f4ff;
+
+  --border-subtle: rgba(0, 0, 0, 0.05);
+  --border-default: rgba(0, 0, 0, 0.09);
+  --border-strong: rgba(0, 0, 0, 0.16);
+
+  --accent-primary: #1d4ed8;
+  --accent-primary-hover: #1e40af;
+  --accent-secondary: #0284c7;
+
+  --status-stable: #059669;
+  --status-stable-bg: rgba(5, 150, 105, 0.08);
+  --status-stable-border: rgba(5, 150, 105, 0.20);
+
+  --status-watch: #d97706;
+  --status-watch-bg: rgba(217, 119, 6, 0.08);
+  --status-watch-border: rgba(217, 119, 6, 0.20);
+
+  --status-action: #dc2626;
+  --status-action-bg: rgba(220, 38, 38, 0.08);
+  --status-action-border: rgba(220, 38, 38, 0.20);
+
+  --severity-critical: #dc2626;
+  --severity-high: #d97706;
+  --severity-medium: #2563eb;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 10px 40px rgba(0, 0, 0, 0.12);
+  --shadow-panel: -4px 0 40px rgba(0, 0, 0, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.3s ease forwards;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-modal {
+  animation: modalIn 0.25s ease forwards;
+}
+
+@media (max-width: 767px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .dashboard-main {
+    padding: 24px 20px 60px !important;
+  }
+
+  .settings-main {
+    padding: 24px 20px 60px !important;
+  }
+
+  .board-main {
+    padding: 28px 20px 60px !important;
+  }
+
+  .brief-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .signals-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .trends-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .board-signals-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .mobile-board-cta {
+    display: block !important;
+  }
+}
